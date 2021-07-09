@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.music.album.exception.AlbumException;
+import com.music.album.model.Album;
 import com.music.album.model.AlbumDTO;
 import com.music.album.service.AlbumService;
 
@@ -55,10 +56,11 @@ public class AlbumController {
 		if (album.equals(null)) {
 			throw new AlbumException("Album should not be Empty");
 		} else {
-			albumService.createAlbum(album);
+			Album albumdata=albumService.createAlbum(album);
+			return new ResponseEntity<>(albumdata,HttpStatus.OK);
 		}
 
-		return ResponseEntity.ok(HttpStatus.CREATED);
+		
 	}
 	@PutMapping("/updateAlbum")
 	public ResponseEntity<Object> updateMovie(@RequestBody AlbumDTO album) throws AlbumException {
