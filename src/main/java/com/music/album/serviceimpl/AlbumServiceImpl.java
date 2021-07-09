@@ -20,7 +20,7 @@ public class AlbumServiceImpl extends AlbumService {
 	private AlbumRepository albumRepo;
 	
 	@Override
-	public void createAlbum(AlbumDTO albumdto) {
+	public Album createAlbum(AlbumDTO albumdto) {
 		
 		Album album=new Album();
 		
@@ -29,7 +29,7 @@ public class AlbumServiceImpl extends AlbumService {
 		album.setLyricist(albumdto.getLyricist());
 		album.setMusicdirector(albumdto.getMusicdirector());
 		
-		albumRepo.save(album);
+		return albumRepo.save(album);
 	}
 	@Override
 	public List<AlbumDTO> getAllAlbum() {
